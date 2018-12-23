@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <title>my programm</title>
+</head>
+<body>
+<!--<form action="making_windows.py" enctype="multipart/form-data" method="POST">-->
+
+    <p><label for="googleText"></label><textarea id="googleText" rows="20" cols="40">
+</textarea>
+    </p>
+    <p><input type="file" id="translatorsFiles" multiple="multiple" accept=".docx">
+    </p>
+<!--</form>-->
+
+<h4>    Запуск файла getting_files.py: </h4>
+<p>
+    <button id="cycleArgs">запустить файл</button>
+
+
+<p>
+    <button id="newWindowButton">Try it</button>
+
+
+</p>
+<h4>    За этим стоит файл Пайтон: <input type="submit" id="go!" value="нажмите, чтобы узнать текущее время">
+    <label id="time"></label></h4>
+
+
+
+<p>
+    <button id="myButton">Run Script</button>
+</p>
+<label id="KisLabel">just Kis</label>
+<h3>
+    За этим стоит строка Пайтон:</h3>
+<p>
+    <button id="pythonButton">1+1</button>
+
+<label id="sum">=?</label>
+</p>
+
+
+
+</body>
+<script>
+      // You can also require other files to run in this process
+      require('./renderer.js');
+      require('./functions.js')
+
+
+</script>
+<!--<script src="functions.js"></script>-->
+</html>
+
+<!--onchange='onFilesSelected(event)'-->
