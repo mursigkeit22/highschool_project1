@@ -2,25 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="09d791f6-6b0b-4cc3-84e1-78ba09c38867" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ertyui.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/get_the_job_done2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pythone_functions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pythone_functions2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/project1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/project1.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/begin.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/common_fourgrams.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/functions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gettext_from_docx.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/getting_files.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/making_windows.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/newfile.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/no_windows.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/Lib/site-packages/docx.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Lib/site-packages/docx.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/get_the_job_done2.py" beforeDir="false" afterPath="$PROJECT_DIR$/get_the_job_done2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_time_interpreter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/тестовыйЮриспруденция_Anna Babayan(en)_63.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/тестовыйЮриспруденция_Misha Danilenko(en)_50.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/тестовыйЮриспруденция_Nika Nika(en)_72.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/тестовыйЮриспруденция_Polina Bs(en)_88.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/тестовыйЮриспруденция_Valentyn Piskovskyi(en).docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/тестовыйЮриспруденция_Vally Manz(en).docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/тестовыйЮриспруденция_Zhanar Jalimbetova(en).docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/тестовыйЮриспруденция_Анжела Мартакова(en).docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/тестовыйЮриспруденция_Анна Задкова(en).docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/тестовыйЮриспруденцияgoogle.docx" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -36,17 +32,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/functions.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="59">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+            <state relative-caret-position="-49">
+              <caret line="52" column="23" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/get_the_job_done.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="40" lean-forward="true" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
+            <state relative-caret-position="133">
+              <caret line="35" column="10" lean-forward="true" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -71,20 +67,7 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-334">
-              <caret line="23" column="23" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
-            </state>
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -613,12 +596,13 @@
         <option value="$PROJECT_DIR$/second_window.html" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/two_texts.html" />
-        <option value="$PROJECT_DIR$/functions.js" />
         <option value="$PROJECT_DIR$/test.html" />
+        <option value="$PROJECT_DIR$/functions.js" />
+        <option value="$PROJECT_DIR$/main.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-11" />
     <option name="y" value="1" />
     <option name="width" value="1938" />
@@ -686,23 +670,23 @@
       <workItem from="1545157088528" duration="12822000" />
       <workItem from="1545290668953" duration="13095000" />
       <workItem from="1545536720892" duration="25553000" />
-      <workItem from="1545744025173" duration="18331000" />
+      <workItem from="1545744025173" duration="25987000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73411000" />
+    <option name="totallyTimeSpent" value="81067000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="1" width="1292" height="686" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2430279" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2430279" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32851985" />
+      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.32851985" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3267148" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39966834" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -770,13 +754,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/newfile.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="23" selection-start-column="23" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -1296,24 +1273,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/functions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        <state relative-caret-position="-49">
+          <caret line="52" column="23" selection-start-line="52" selection-start-column="23" selection-end-line="52" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.html">
+    <entry file="file://$PROJECT_DIR$/newfile.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
+        <state>
+          <caret column="23" selection-start-column="23" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-334">
-          <caret line="23" column="23" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
+        <state relative-caret-position="133">
+          <caret line="35" column="10" lean-forward="true" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="11" />
         </state>
       </provider>
     </entry>

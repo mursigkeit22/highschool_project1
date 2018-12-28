@@ -49,8 +49,10 @@ var translatorFileInput = document.getElementById('translatorsFiles');
 translatorFileInput.addEventListener('change', function () {
     for (let i = 0; i < translatorFileInput.files.length; i++) {
         options.args.push(translatorFileInput.files[i].name);
-        options.args.push(translatorFileInput.files[i].path)
+        options.args.push(translatorFileInput.files[i].path);
+        makeLog('added ' + translatorFileInput.files[i].name)
     }
+
 });
 
 var buttonFileCycle = document.getElementById('cycleArgs');

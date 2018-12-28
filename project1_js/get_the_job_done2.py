@@ -3,8 +3,7 @@ import pythone_functions2 as pf
 
 
 text_from_google = str(sys.argv[-1]).split()
-# text_from_google = ' '.join(text_from_google)
-# words_in_text_from_google = len(text_from_google.split())
+words_in_text_from_google = len(text_from_google)
 
 names_and_paths = dict()  # имя файла: путь до файла
 filenames_and_texts = dict()  # имя файла: текст файла
@@ -13,6 +12,7 @@ for i in range(1, len(sys.argv) - 1, 2):
     names_and_paths[sys.argv[i]] = sys.argv[i + 1]
 for name, path in names_and_paths.items():
     filenames_and_texts[name] = pf.get_text(path) # тест поспличеный
+
 
 filenames_and_commongrams = dict()  # имя файла: общие 4-граммы с text_from_google
 for filename, text in filenames_and_texts.items():
@@ -38,6 +38,6 @@ for filename in filenames_and_texts:
 with open('newfile.txt', 'a', encoding='utf-8') as made_file:
     made_file.write('</body> </html>')
 # results
-print(len(sys.argv), type(sys.argv))
-print(len(names_and_paths))
-print(len(filenames_and_texts))
+print('len and type sys.argv ', len(sys.argv), type(sys.argv))
+print('len names_and_paths ', len(names_and_paths))
+print('len filenames_and_texts ', len(filenames_and_texts))
