@@ -3,55 +3,137 @@
 <head>
     <meta charset="utf-8">
     <title>my programm</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-
-    <p><label for="googleText"></label><textarea id="googleText" rows="20" cols="40">
-</textarea>
+<div id="upleft">
+    <p>
+        что делать пользователю
     </p>
-    <p><input type="file" id="translatorsFiles" multiple="multiple" accept=".docx">
-    </p>
-<!--</form>-->
+</div>
 
-<h4>    Запуск файла getting_files.py: </h4>
-<p>
-    <button id="cycleArgs">запустить файл</button>
+<div id="upright"><p><input type="file" id="translatorsFiles" multiple="multiple" accept=".docx"
+                            onchange="myFunction()">
+</p></div>
+
+<div id="googleTextarea">
+    <label for="googleText"></label> <textarea id="googleText">
+       </textarea>
+</div>
+
+<!--<div class="left-col">-->
+<!--<p><label for="googleText"></label><textarea id="googleText" rows="30" cols="60">-->
+<!--</textarea>-->
+<!--</p>-->
+<!--</div>-->
+<div id="transtexts">
+    <!--class="right-col">-->
+    <p></p>
+    <!--class="inside">-->
+    <!--<p><input type="file" id="translatorsFiles" multiple="multiple" accept=".docx" onchange="myFunction()">-->
+    <!--</p>-->
+    <p id="nameList"></p>
+</div>
+
+<div id="footer">по центру - гоу!
+
+        <button id="cycleArgs">запустить файл</button>
+
+        <button id="newWindowButton">Try it</button>
+
+</div>
 
 
-<p>
-    <button id="newWindowButton">Try it</button>
+<!--<h4> За этим стоит файл Пайтон: <input type="submit" id="go!" value="нажмите, чтобы узнать текущее время">-->
+<!--<label id="time"></label></h4>-->
 
 
-</p>
-<h4>    За этим стоит файл Пайтон: <input type="submit" id="go!" value="нажмите, чтобы узнать текущее время">
-    <label id="time"></label></h4>
+<!--<p>-->
+<!--<button id="myButton">Run Script</button>-->
+<!--</p>-->
+<!--<label id="KisLabel">just Kis</label>-->
+<!--<h3>-->
+<!--За этим стоит строка Пайтон:</h3>-->
+<!--<p>-->
+<!--<button id="pythonButton">1+1</button>-->
 
-
-
-<p>
-    <button id="myButton">Run Script</button>
-</p>
-<label id="KisLabel">just Kis</label>
-<h3>
-    За этим стоит строка Пайтон:</h3>
-<p>
-    <button id="pythonButton">1+1</button>
-
-<label id="sum">=?</label>
-</p>
-
+<!--<label id="sum">=?</label>-->
+<!--</p>-->
 
 
 </body>
 <script>
-      // You can also require other files to run in this process
-      require('./renderer.js');
-      require('./functions.js')
+    // You can also require other files to run in this process
+    require('./renderer.js');
+    require('./functions.js');
+    let fs = require('fs');
 
+    function rewrite() {
+        fs.writeFileSync('tempFiles\\options.args.txt', '');
+        for (var el of arrayFiles) {
+            fs.appendFileSync('tempFiles\\options.args.txt', el.name);
+            fs.appendFileSync('tempFiles\\options.args.txt', ',');
+            fs.appendFileSync('tempFiles\\options.args.txt', el.path);
+            fs.appendFileSync('tempFiles\\options.args.txt', ',');
+        }
+        var text = fs.readFileSync('tempFiles\\options.args.txt', 'utf8');
+        text = text.slice(0, -1);
+        fs.writeFileSync('tempFiles\\options.args.txt', text);
+    }
+
+    function hideLine(idNum) {
+        var selectedDiv = document.getElementById('divnum' + idNum);
+        selectedDiv.style.display = 'none';
+        for (i = 0; i < arrayFiles.length; i++) {
+            if (arrayFiles[i].fileId === idNum) {
+                arrayFiles.splice(i, 1)
+            }
+            rewrite()
+        }
+
+
+        // selectedDiv.innerHTML = '';
+
+
+    }
+
+    var globalFileIdNumber = 0;
+    var arrayFiles = [];
+
+    function myFunction() {
+
+        var translatorsFiles = document.getElementById("translatorsFiles");
+        var txt = document.getElementById("nameList").innerHTML;
+        if ('files' in translatorsFiles) {
+
+            if (translatorsFiles.files.length > 0) {
+                for (var file of translatorsFiles.files) {
+                    globalFileIdNumber++;
+                    if ('name' in file) {
+                        txt += "<div id = 'divnum" + globalFileIdNumber + "'> <br> <strong>";
+                        txt += file.name + "</strong> " +
+                            " <button type='button' onClick='hideLine(" + globalFileIdNumber + " )'>Удалить</button><br></div>";
+                        var aboutFiles = {
+                            fileId: globalFileIdNumber,
+                            name: file.name,
+                            path: file.path
+                        };
+                        arrayFiles.push(aboutFiles);
+                        rewrite()
+
+
+                    }
+                }
+                document.getElementById("nameList").innerHTML = txt;
+            }
+        }
+
+
+    }
 
 </script>
 <!--<script src="functions.js"></script>-->
 </html>
 
-<!--onchange='onFilesSelected(event)'-->
+

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="upleft">
+    <p>
+        что делать пользователю
+    </p>
+</div>
+<div id="upright"><p><input type="file" id="translatorsFiles" multiple="multiple" accept=".docx" onchange="myFunction()">
+</p></div>
+
+<div id="googletext">
+    <label for="googleTextarea"></label> <textarea id="googleTextarea">
+       </textarea>
+
+</div>
+
+<div id="transtexts">
+    <p id="nameList">
+
+    </p>
+    <script>
+        var arrayFiles = [];
+
+        function myFunction() {
+            alert('hghj');
+            var translatorsFiles = document.getElementById("translatorsFiles");
+            var txt = document.getElementById("nameList").innerHTML;
+            if ('files' in translatorsFiles) {
+
+                if (translatorsFiles.files.length > 0) {
+                    for (var file of translatorsFiles.files) {
+                        globalFileIdNumber++;
+                        if ('name' in file) {
+                            txt += "<div id = 'divnum" + globalFileIdNumber + "'> <br> <strong>";
+                            txt += file.name + "</strong> " +
+                                " <button type='button' onClick='hideLine(" + globalFileIdNumber + " )'>Удалить</button><br></div>";
+                            var aboutFiles = {
+                                fileId: globalFileIdNumber,
+                                name: file.name,
+                                path: file.path
+                            };
+                            arrayFiles.push(aboutFiles);
+                            rewrite()
+
+
+                        }
+                    }
+                    document.getElementById("nameList").innerHTML = txt;
+                }
+            }
+
+
+        }
+    </script></div>
+
+<div id="footer">по центру - гоу!</div>
+</body>
+<script>
+
+    require('./renderer.js');
+    require('./functions.js');
+    let fs = require('fs');
+
+    function rewrite() {
+        fs.writeFileSync('tempFiles\\options.args.txt', '');
+        for (var el of arrayFiles) {
+            fs.appendFileSync('tempFiles\\options.args.txt', el.name);
+            fs.appendFileSync('tempFiles\\options.args.txt', ',');
+            fs.appendFileSync('tempFiles\\options.args.txt', el.path);
+            fs.appendFileSync('tempFiles\\options.args.txt', ',');
+        }
+        var text = fs.readFileSync('tempFiles\\options.args.txt', 'utf8');
+        text = text.slice(0, -1);
+        fs.writeFileSync('tempFiles\\options.args.txt', text);
+    }
+
+    function hideLine(idNum) {
+        var selectedDiv = document.getElementById('divnum' + idNum);
+        selectedDiv.style.display = 'none';
+        for (i = 0; i < arrayFiles.length; i++) {
+            if (arrayFiles[i].fileId === idNum) {
+                arrayFiles.splice(i, 1)
+            }
+            rewrite()
+        }
+
+
+
+    }
+
+    var globalFileIdNumber = 0;
+
+
+</script>
+</html>
