@@ -2,45 +2,44 @@
 <html lang="">
 <head>
     <meta charset="utf-8">
-    <title>my programm</title>
-    <link rel="stylesheet" href="style.css">
+    <title>MT Analyzer</title>
+    <link rel="stylesheet" href="style_main_window.css">
+    <link rel="stylesheet" href="buttons.css">
+
 </head>
-<body>
+<body style="background-color: #afdfe1">
 
 <div id="upleft">
-    <p>
-        что делать пользователю
-    </p>
-</div>
-
-<div id="upright"><p><input type="file" id="translatorsFiles" multiple="multiple" accept=".docx"
-                            onchange="myFunction()">
-</p></div>
-
-<div id="googleTextarea">
-    <label for="googleText"></label> <textarea id="googleText">
-       </textarea>
-</div>
-
-<!--<div class="left-col">-->
-<!--<p><label for="googleText"></label><textarea id="googleText" rows="30" cols="60">-->
-<!--</textarea>-->
-<!--</p>-->
-<!--</div>-->
-<div id="transtexts">
-    <!--class="right-col">-->
     <p></p>
-    <!--class="inside">-->
-    <!--<p><input type="file" id="translatorsFiles" multiple="multiple" accept=".docx" onchange="myFunction()">-->
-    <!--</p>-->
-    <p id="nameList"></p>
+    <p id="mur">
+        &ensp;Place your machine translated text here⬇:
+    </p>
+    <button  style = 'display: none;' id="reset">New task</button>
 </div>
 
-<div id="footer">по центру - гоу!
+<div id="upright"><label id = 'label' for="translatorsFiles" class="label"> Choose files you want to check</label>
+    <input type="file" id="translatorsFiles" class='my' multiple="multiple" accept=".docx"
+                            onchange="writeFileNames()">
+</div>
 
-        <button id="cycleArgs">запустить файл</button>
+<!--<div id="workingArea">-->
+    <label for="googleText"></label>
+    <textarea id="googleText">
+       </textarea>
+<!--</div>-->
 
-        <button id="newWindowButton">Try it</button>
+
+<!--<div id="transtexts">-->
+
+<div id="nameList"></div>
+
+
+
+<div id="footer">
+
+    <button  id="cycleArgs">Go!</button>
+
+    <!--<button id="newWindowButton">Try it</button>-->
 
 </div>
 
@@ -69,6 +68,7 @@
     require('./functions.js');
     let fs = require('fs');
 
+
     function rewrite() {
         fs.writeFileSync('tempFiles\\options.args.txt', '');
         for (var el of arrayFiles) {
@@ -78,7 +78,7 @@
             fs.appendFileSync('tempFiles\\options.args.txt', ',');
         }
         var text = fs.readFileSync('tempFiles\\options.args.txt', 'utf8');
-        text = text.slice(0, -1);
+        text = text.slice(0, -1); // убираем конечную запятую и перезаписываем
         fs.writeFileSync('tempFiles\\options.args.txt', text);
     }
 
@@ -89,51 +89,70 @@
             if (arrayFiles[i].fileId === idNum) {
                 arrayFiles.splice(i, 1)
             }
-            rewrite()
         }
-
-
-        // selectedDiv.innerHTML = '';
-
-
+        rewrite()
     }
+
 
     var globalFileIdNumber = 0;
     var arrayFiles = [];
+    const { dialog } = require('electron').remote;
 
-    function myFunction() {
-
+    function writeFileNames() {
         var translatorsFiles = document.getElementById("translatorsFiles");
         var txt = document.getElementById("nameList").innerHTML;
-        if ('files' in translatorsFiles) {
 
+        if ('files' in translatorsFiles) {
             if (translatorsFiles.files.length > 0) {
+                var badNames = [];
                 for (var file of translatorsFiles.files) {
                     globalFileIdNumber++;
                     if ('name' in file) {
-                        txt += "<div id = 'divnum" + globalFileIdNumber + "'> <br> <strong>";
-                        txt += file.name + "</strong> " +
-                            " <button type='button' onClick='hideLine(" + globalFileIdNumber + " )'>Удалить</button><br></div>";
+                        if (nameAlreadyInList(file.name)) {
+                            badNames.push(file.name);
+                            continue;
+                        }
+                        txt += "<div id = 'divnum" + globalFileIdNumber + "'> <br> ";
+                        txt += file.name + " " +
+                            " <button type='button' class = 'del' onclick='hideLine(" + globalFileIdNumber + " )'>☒</button><br></div>";
                         var aboutFiles = {
                             fileId: globalFileIdNumber,
                             name: file.name,
                             path: file.path
                         };
                         arrayFiles.push(aboutFiles);
-                        rewrite()
-
 
                     }
                 }
-                document.getElementById("nameList").innerHTML = txt;
-            }
-        }
+                rewrite()
+                if (badNames.length === 1) {
+                    dialog.showMessageBox({message:'file '+ badNames +' is already added' ,title:'Oops! I did it again'});
+                                    }
+                if (badNames.length > 1) {
+                    dialog.showMessageBox({message:'files ' + badNames + ' are already added',title:'Oops! I did it again'});
 
+                }
+
+                document.getElementById("translatorsFiles").value = '';
+            }
+            document.getElementById("nameList").innerHTML = txt;
+        }
 
     }
 
+    function nameAlreadyInList(name) {
+        for (var obj of arrayFiles) {
+            if (obj.name === name) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
 </script>
-<!--<script src="functions.js"></script>-->
+
 </html>
 
 

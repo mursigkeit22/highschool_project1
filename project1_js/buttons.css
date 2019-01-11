@@ -1,0 +1,82 @@
+.del{
+    border-radius: 4px;
+    background-color: #ff9f27;
+    cursor: pointer;
+    border: 0.5px solid red;
+    /*text-align: center;*/
+    /*width: 15px;*/
+    /*height: 15px;*/
+    /*padding: 0;*/
+    /*padding-bottom: 0;*/
+
+
+}
+.my {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+    text-align: center;
+    margin: auto;
+}
+.label {
+
+    margin: auto;
+    width: 200px;
+    height: 50px;
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    display: block;
+    /*font: 14px Tahoma, sans-serif;*/
+    font: 14px/50px Tahoma;
+    border: 0.5px solid #333;
+    color: #333;
+    background-color: #FFB65A;
+}
+/*#buttons {*/
+    /*margin: auto;*/
+    /*position:relative;*/
+    /*!*left:90%;*!*/
+    /*background-color: #FFC0CB;*/
+    /*text-align: center;*/
+/*}*/
+#cycleArgs {
+    width: 100px;
+    height: 40px;
+    top: 5px;
+    left: 2px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    border: 0.5px solid #333;
+    /*background-color: #afdfe1;*/
+    background-color: #ff940e;
+    /*background-color: #FFC0CB;*/
+    font: 22px/40px Tahoma;
+    color: #333;
+    cursor: pointer;
+
+}
+#reset {
+    width: 150px;
+    height: 50px;
+    /*margin: auto;*/
+    /*top: 5px;*/
+    /*bottom: 20px;*/
+    z-index: 9999;
+    /*left: 30%;*/
+    left: 85%;
+    border-radius: 10px;
+    /*text-align: center;*/
+    position: relative;
+    /*position: absolute;*/
+    border: 0.5px solid #333;
+    background-color: #ff940e;
+    font: 22px/40px Tahoma;
+    color: #333;
+    cursor: pointer;
+
+}

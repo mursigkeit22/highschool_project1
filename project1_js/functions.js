@@ -1,50 +1,24 @@
 let {PythonShell} = require('python-shell');
 let fs = require('fs');
 let logger = require('electron-log/renderer');
+var globalFileIdNumber = 0;
+var arrayFiles = [];
+const { dialog } = require('electron').remote;
+
+
 
 
 function makeLog(name) {
     logger.info(name);
 }
-// require('./main.js');
 
-/*
-function deleteFile() {
-    alert('delete');
-}
-*/
 
-var buttonRunText = document.getElementById('newWindowButton');
-buttonRunText.addEventListener('click', function () {
-    window.open('first_window_test.html','', 'width=1200');
-});
-
-// var buttonRunScript = document.getElementById('myButton');
-// buttonRunScript.addEventListener('click', function () {
-//     document.getElementById('KisLabel').innerHTML = 'super Kis';
-//     makeLog('SuperKis');
+// var buttonRunText = document.getElementById('newWindowButton');
+// buttonRunText.addEventListener('click', function () {
+//     window.open('second_window_test.html', '', 'width=800, height=500');
 // });
 
 
-// var buttonOnePlusOne = document.getElementById('pythonButton');
-// buttonOnePlusOne.addEventListener('click', function () {
-//     PythonShell.runString('import sys; x=1+1; print(x); sys.stdout.flush()', null, function (err, results) {
-//             if (err) makeLog('ERROR ' + err);
-//             makeLog(results);
-//             document.getElementById('sum').innerHTML = '= ' + results;
-//         }
-//     )
-// });
-
-
-// var buttonRunProg = document.getElementById('go!');
-// buttonRunProg.addEventListener('click', function () {
-//     PythonShell.run('test_time_interpreter.py', null, function (err, results) {
-//         if (err) makeLog('ERROR ' + err);
-//         makeLog(results);
-//         document.getElementById('time').innerHTML = results;
-//     })
-// });
 
 
 var fromTextArea;
@@ -67,9 +41,9 @@ var buttonFileCycle = document.getElementById('cycleArgs');
 var textArea = document.getElementById('googleText');
 buttonFileCycle.addEventListener('click', function () {
     var text_opt = fs.readFileSync('tempFiles\\options.args.txt', 'utf8');
-    makeLog('text_opt: ' + text_opt);
+    // makeLog('text_opt: ' + text_opt);
     var textByLine = text_opt.split(",");
-    for (strr of textByLine){
+    for (strr of textByLine) {
         options.args.push(strr);
     }
     fromTextArea = document.getElementById('googleText').value;
@@ -77,17 +51,41 @@ buttonFileCycle.addEventListener('click', function () {
     PythonShell.run('get_the_job_done2.py', options, function (err, results) {
         makeLog('options: ' + options.args);
 
-        if (err) makeLog('ERROR ' + err);
+        if (err) {makeLog('ERROR ' + err);
+        alert(err)}
 
         fs.writeFileSync('tempFiles\\test.html', '');
         var text = fs.readFileSync('tempFiles\\newfile.txt', 'utf8');
         fs.writeFileSync('test.html', text);
 
-        window.open('test.html');
+        window.open('test.html', '', 'width=1200,height=600');
+        document.getElementById('reset').style.display = 'inline'
         for (let res of results) {
-             makeLog(res);
+            makeLog(res);
         }
 
 
     })
+});
+
+buttonFileCycle.addEventListener('click', function () {
+    document.getElementById('mur').style.display = 'none';
+    document.getElementById('label').style.display = 'none';
+    document.getElementById('cycleArgs').style.display = 'none';
+    document.getElementById('nameList').style.display = 'none';
+    document.getElementById('googleText').style.display = 'none';
+    document.body.style.cursor = "wait !important";
+
+});
+var buttonReset = document.getElementById('reset');
+buttonReset.addEventListener('click', function () {
+    document.getElementById('mur').style.display = 'inline';
+    document.getElementById('label').style.display = 'block';
+    document.getElementById('cycleArgs').style.display = 'inline';
+    document.getElementById("nameList").innerHTML = '';
+    document.getElementById('nameList').style.display = 'inline';
+    document.getElementById('googleText').value = '';
+    document.getElementById('googleText').style.display = 'inline';
+    document.getElementById('reset').style.display = 'none';
+    options.args.length = 0
 });

@@ -6,6 +6,9 @@ var options = {
 let {PythonShell} = require('python-shell', options)
 const {app, BrowserWindow} = require('electron')
 const fs = require('fs');
+const electron = require("electron");
+const Menu = electron.Menu;
+const MenuItem = electron.MenuItem;
 
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -20,7 +23,24 @@ function createWindow() {
 
 
     // and load the index.html of the app.
-    mainWindow.loadFile('index.html')
+    mainWindow.loadFile('index.html');
+    // let rightClickPosition = null;
+    const contextMenu = new Menu();
+    contextMenu.append(new MenuItem({
+        role:'paste'
+
+     }));
+    contextMenu.append(new MenuItem({
+            // label:"Paste",
+            role:'selectAll'        })
+    );
+    mainWindow.webContents.on("context-menu", function (event, params) {
+        // logger.info(params);
+        // logger.info(event);
+        // rightClickPosition = {x: event.x, y: event.y}
+        // contextMenu.popup(remote.getCurrentWindow());
+        contextMenu.popup(mainWindow);
+    });
 
 
     // Open the DevTools.
@@ -78,3 +98,4 @@ app.on('activate', function () {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 var logger = require('electron-log');
+const { dialog } = require('electron')

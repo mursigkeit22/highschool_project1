@@ -1,20 +1,25 @@
 from nltk import ngrams
 n = 5
-import docx
+
+import re
 
 
-def get_text(filename):
-    doc = docx.Document(filename)
-    full_text = []
-    for para in doc.paragraphs:
-        full_text.append(para.text)
-    joined_text = ' '.join(full_text)
-    split_text_from_docx = joined_text.split()
-    return split_text_from_docx
 
+def marking_indentations(text):
+    text = re.sub('\n+', '\n', text)
+    list_paragraphs = text.split('\n')
+    indentation_marks_list = []
+    summ = 0
+    for paragraph in list_paragraphs:
+        words_in_paragraph = len(paragraph.split())
+        indentation_marks_list.append(summ)
+        summ += words_in_paragraph
+    return indentation_marks_list
 
 
 def making_set_of_common_grams(text1, text2):
+    text1 = text1.split()
+    text2 = text2.split()
     grams1 = ngrams(text1, n)
     set_of_grams1 = set(grams1)
     grams2 = ngrams(text2, n)
@@ -25,9 +30,9 @@ def making_set_of_common_grams(text1, text2):
 def making_list_of_reapeated_gramms(text1, text2, set_common_grams):
     more_than_once_list1 = []
     more_than_once_list2 = []
-    grams1 = ngrams(text1, n)
+    grams1 = ngrams(text1.split(), n)
     list_of_grams1 = list(grams1)
-    grams2 = ngrams(text2, n)
+    grams2 = ngrams(text2.split(), n)
     list_of_grams2 = list(grams2)
     to_exclude = set()
     for gramm in set_common_grams:
@@ -38,7 +43,7 @@ def making_list_of_reapeated_gramms(text1, text2, set_common_grams):
             to_exclude.add(gramm)
             more_than_once_list2.append((gramm, list_of_grams2.count(gramm)))
 
-    return len(more_than_once_list1),len(more_than_once_list2), to_exclude
+    return more_than_once_list1, more_than_once_list2, to_exclude
 
 # def more_than_once(list_common_grams):
 #     more_than_once_list = []
@@ -51,107 +56,75 @@ def making_list_of_reapeated_gramms(text1, text2, set_common_grams):
 #     return more_than_once_list, set_to_compare
 
 
-def what_current_ngramm(current_pos, split_text):
-    current_ngramm = []
-    for i in range(n):
-        current_ngramm.append(split_text[current_pos+i])
-    current_ngramm = tuple(current_ngramm)
-    return current_ngramm
 
+def adding_tags(text, set_of_common_grams, set_to_exclude):
 
+    def what_current_ngramm(current_pos, split_text):
+        current_ngramm = []
+        for i in range(n):
+            current_ngramm.append(split_text[current_pos + i])
+        current_ngramm = tuple(current_ngramm)
+        return current_ngramm
 
-def adding_tags(split_text, set_of_common_grams, set_to_exclude):
-    text_split1 = list(split_text)
-    text_with_tags = list(split_text)
-    start_tag = '<span style="background-color: #f38fd1">'
+    text_split1 = list(text.split())
+    tagged_list = list(text.split())
+    start_tag = '<span style="background-color: #afdfe1">'
     end_tag = '</span>'
     for gramm in set_of_common_grams.difference(set_to_exclude):
         current_pos = 0
         current_ngramm = what_current_ngramm(current_pos, text_split1)
-            # (text_split1[current_pos], text_split1[current_pos + 1], text_split1[current_pos + 2],
-            #  text_split1[current_pos + 3], text_split1[current_pos + 4])
-
-        while current_ngramm != gramm and current_pos < len(split_text) - n:
-
+        while current_ngramm != gramm and current_pos < len(text.split()) - n:
             current_pos += 1
             current_ngramm = what_current_ngramm(current_pos, text_split1)
-                # \
-                # (text_split1[current_pos], text_split1[current_pos + 1], text_split1[current_pos + 2],
-                #  text_split1[current_pos + 3], text_split1[current_pos + 4])
-
         else:
-            # if gramm not in set_to_compare:
             for i in range(n):
-                text_with_tags[current_pos + i] = start_tag + text_split1[current_pos + i] + end_tag
+                tagged_list[current_pos + i] = start_tag + text_split1[current_pos + i] + end_tag
     for el in set_to_exclude:
         current_pos = 0
-        while current_pos < len(split_text) - n:
+        while current_pos < len(text.split()) - n:
             current_ngramm = what_current_ngramm(current_pos, text_split1)
             if el == current_ngramm:
                 for i in range(n):
-                    text_with_tags[current_pos + i] = start_tag + text_split1[current_pos + i] + end_tag
+                    tagged_list[current_pos + i] = start_tag + text_split1[current_pos + i] + end_tag
             current_pos += 1
 
-
-                # text_with_tags[current_pos] = start_tag + text_split1[current_pos] + end_tag
-                # text_with_tags[current_pos + 1] = start_tag + text_split1[current_pos + 1] + end_tag
-                # text_with_tags[current_pos + 2] = start_tag + text_split1[current_pos + 2] + end_tag
-                # text_with_tags[current_pos + 3] = start_tag + text_split1[current_pos + 3] + end_tag
-                # text_with_tags[current_pos + 4] = start_tag + text_split1[current_pos + 4] + end_tag
-            # else:
-            #     for i in range(len(more_than_once_list)):
-            #         if more_than_once_list[i][0] == gramm:
-            #             a = more_than_once_list[i][1]
-            #             tagged_grams = 0
-            #             while tagged_grams < a and current_pos < len(split_text) - 4:
-            #                 if current_fourgramm == gramm:
-            #                     text_with_tags[current_pos] = start_tag + text_split1[current_pos] + end_tag
-            #                     text_with_tags[current_pos + 1] = start_tag + text_split1[current_pos + 1] + end_tag
-            #                     text_with_tags[current_pos + 2] = start_tag + text_split1[current_pos + 2] + end_tag
-            #                     text_with_tags[current_pos + 3] = start_tag + text_split1[current_pos + 3] + end_tag
-            #                     current_pos += 1
-            #                     tagged_grams += 1
-            #                     current_fourgramm = \
-            #                         (text_split1[current_pos], text_split1[current_pos + 1],
-            #                          text_split1[current_pos + 2],
-            #                          text_split1[current_pos + 3])
-            #                 else:
-            #                     current_pos += 1
-            #                     current_fourgramm = \
-            #                         (text_split1[current_pos], text_split1[current_pos + 1],
-            #                          text_split1[current_pos + 2],
-            #                          text_split1[current_pos + 3])
+    return tagged_list
 
 
-    return text_with_tags
-
-
-
-
-
-def percentage(list_with_tags1, list_with_tags2):
-    number_words1 = len(list_with_tags1)
-    number_words2 = len(list_with_tags2)
+def percentage(tagged_list1, tagged_list2): # после def_with_tags, до placing_ident
+    number_words1 = len(tagged_list1)
+    number_words2 = len(tagged_list2)
     number_tags1 = 0
     number_tags2 = 0
-    for el in list_with_tags1:
+    for el in tagged_list1:
         if '<span style="background-color:' in el:
             number_tags1 += 1
-    for el in list_with_tags2:
+    for el in tagged_list2:
         if '<span style="background-color:' in el:
             number_tags2 += 1
     result_float1 = number_tags1 / ((number_words1+number_words2) // 2)
     result_twoafterdot1 = float("{0:.2f}".format(result_float1))
-    percent_identicle1 = str(int(result_twoafterdot1 * 100))
+    percent_identical1 = str(int(result_twoafterdot1 * 100))
     result_float2 = number_tags2 / ((number_words1 + number_words2) // 2)
     result_twoafterdot2 = float("{0:.2f}".format(result_float2))
-    percent_identicle2 = str(int(result_twoafterdot2 * 100))
-    return percent_identicle1, percent_identicle2
+    percent_identical2 = str(int(result_twoafterdot2 * 100))
+    return percent_identical1, percent_identical2
 
 
-def creating_html(text_list_withtags1, text_list_withtags2, filename):
-    text_withtags_google = ' '.join(text_list_withtags1)
-    text_withtags_trans = ' '.join(text_list_withtags2)
+def making_paragraphs(indentation_marks_list, tagged_list):
+    list_with_tags_and_indents = []
+    for j in range(len(indentation_marks_list) - 1):
+        for i in range(indentation_marks_list[j], indentation_marks_list[j + 1]):
+            list_with_tags_and_indents.append(tagged_list[i])
+        list_with_tags_and_indents.append('<br>')
+    for i in range(indentation_marks_list[-1], len(tagged_list)):
+        list_with_tags_and_indents.append(tagged_list[i])
+    return list_with_tags_and_indents
+
+
+def creating_html(list_with_tags_and_indents1, list_with_tags_and_indents2, filename):
+    text_withtags_google = ' '.join(list_with_tags_and_indents1)
+    text_withtags_trans = ' '.join(list_with_tags_and_indents2)
     name_txt = 'tempFiles\\' + str(filename) + '.html'
     with open(name_txt, 'w', encoding='utf-8') as future_html:
         future_html.write("""
@@ -163,10 +136,11 @@ def creating_html(text_list_withtags1, text_list_withtags2, filename):
     <style>
         .gross {
 
-            background: #fafefc; /* Цвет фона */
-            border: 1px solid #c5ecf4;
+            background: #ffffff; /* Цвет фона */
+            border: 1px solid #93e2e8;
             padding: 20px; /* Поля вокруг текста */
             overflow: hidden;
+            font-family: "Helvetica Neue", Helvetica, sans-serif;
         }
     .left-col, /* левая колонка */
     .right-col/* правая колонка */
@@ -179,6 +153,7 @@ def creating_html(text_list_withtags1, text_list_withtags2, filename):
     /*border: 8px solid #aaffaa;*/
     margin-bottom: 2px;
     float: left; /* плавающие блоки */
+    font: Helvetica
 
     }
     .left-col{

@@ -1,0 +1,146 @@
+
+
+
+/*.inside {*/
+    /*overflow-y: scroll;*/
+    /*height: 450px; !* высота нашего блока *!*/
+    /*width: 500px; !* ширина нашего блока *!*/
+    /*background: #fff; !* цвет фона, белый *!*/
+    /*border: 0.5px solid*/
+
+/*}*/
+/*.left-col, !* левая колонка *!*/
+/*.right-col !* правая колонка *!*/
+/*{*/
+    /*width: 50%; !* ширина *!*/
+    /*!*min-width: 180px; !* минимальная ширина сужения *!*!*/
+    /*height: 80%; !* высота *!*/
+    /*box-sizing: border-box;*/
+    /*!*outline: 1px solid #ff7878;*!*/
+    /*!*border: 8px solid #aaffaa;*!*/
+    /*margin-bottom: 2px;*/
+    /*float: left; !* плавающие блоки *!*/
+
+/*}*/
+
+/*.left-col {*/
+    /*padding-right: 20px; !* отступ справа *!*/
+/*}*/
+
+/*.right-col {*/
+    /*padding-left: 20px; !* отступ слева *!*/
+    /*!*overflow-y: scroll;*!*/
+    /*!*height: 500px; !* высота нашего блока *!*!*/
+    /*!*width: 500px; !* ширина нашего блока *!*!*/
+    /*!*background: #fff; !* цвет фона, белый *!*!*/
+    /*!*border: 1px solid*!*/
+/*}*/
+.cursor-style{
+    cursor: wait;
+}
+
+#upleft{
+    /*background-color: #acd1ff;*/
+    background-color: #afdfe1;
+    /*background-color: #f38fd1;*/
+    /*position: relative;*/
+    /*background:#acd1ff;*/
+    position: absolute;
+    top: 0;
+    left: 0;
+    /*margin: 0;*/
+    width:50%;
+    height:10%;
+    font: 18px/50px Tahoma;
+    color: #333
+}
+#upright{
+
+    /*background-color: #acd1ff;*/
+    background-color: #afdfe1;
+    position:absolute;
+
+    top: 0;
+
+    right: 0;
+    width:50%;
+    height:10%;
+    text-align: center;
+}
+/*#googleTextarea{*/
+    /*position:absolute;*/
+
+    /*left: 5px;*/
+    /*top:10%;*/
+    /*background:#f5fbfb;*/
+    /*width:50%;*/
+    /*height:80%;*/
+/*}*/
+/*#transtexts{*/
+    /*background:#f5fbfb;*/
+    /*width:50%;*/
+    /*height:80%;*/
+    /*position:absolute;*/
+    /*left:50%;*/
+    /*right: 5px;*/
+    /*top:10%;*/
+    /*overflow-y: scroll;*/
+/*}*/
+
+/*#workingArea{*/
+    /*!*background:#acd1ff;*!*/
+    /*background-color: magenta;*/
+    /*height: 80%;*/
+    /*position:absolute;*/
+
+    /*!*left:5px;*!*/
+    /*!*width: 20px;*!*/
+    /*right: 50px;*/
+    /*!*position: relative;*!*/
+    /*top:10%;*/
+
+/*}*/
+#footer{
+    /*background:#acd1ff;*/
+    background-color: #afdfe1;
+    position:absolute;
+    /*width:100%;*/
+    height:10%;
+    bottom:0;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+#googleText {
+    position:absolute;
+    background:#fefcfd;
+    width:45.6%;
+    height:79%;
+    border: 1px solid #333;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: medium;
+    line-height: 1.4;
+    border-radius: 4px;
+    left: 4px;
+    top: 10%
+
+    }
+#nameList{
+    position:absolute;
+    /*left: 54.5%;*/
+    right: 5px;
+    background:#fefcfd;
+    width:45%;
+    height:79.7%;
+    top: 10%;
+    border: 1px solid #333;
+    border-right: 1.5px solid #333;
+    font-family: Tahoma, sans-serif;
+    font-size: medium;
+    padding-left: 5px;
+    line-height: 1.4;
+    border-radius: 4px;
+    overflow-y: auto;
+
+}
